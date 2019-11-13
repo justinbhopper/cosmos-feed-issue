@@ -1,0 +1,297 @@
+# Configure appropriate macro attributes for use in later definitions...
+[attr]noHandling -text -diff -merge -eol      -export-ignore -export-subst delta
+[attr]unixText    text  diff  merge  eol=lf   -export-ignore -export-subst delta encoding=utf8
+[attr]winText     text  diff  merge  eol=crlf -export-ignore -export-subst delta encoding=utf8
+[attr]binFile    -text -diff -merge -eol      -export-ignore -export-subst delta
+[attr]imageFile  -text -diff -merge -eol      -export-ignore -export-subst delta
+[attr]docFile    -text -diff -merge -eol      -export-ignore -export-subst delta
+
+# Default to disabling EOL handling and textual diff for all files in the repo.
+*                        unixText
+*.*                      noHandling
+
+# Repository Configuration and Control files
+.gitattributes           unixText
+.gitignore               unixText
+.editorconfig            unixText
+.gitlab-ci.yml           unixText
+Jenkinsfile              unixText
+*.Dockerfile             unixText
+
+# Generic Readme/License/Repository Info files
+ACKNOWLEDGMENTS          unixText
+ACKNOWLEDGMENTS.md       unixText
+AUTHORS                  unixText
+AUTHORS.md               unixText
+CODE_OF_CONDUCT          unixText
+CODE_OF_CONDUCT.md       unixText
+CHANGELIST               unixText
+CHANGELIST.md            unixText
+CHANGELOG                unixText
+CHANGELOG.md             unixText
+CHANGES                  unixText
+CHANGES.md               unixText
+CONTRIBUTING             unixText
+CONTRIBUTING.md          unixText
+CONTRIBUTORS             unixText
+CONTRIBUTORS.md          unixText
+COPYING                  unixText
+COPYING.md               unixText
+COPYRIGHT                unixText
+COPYRIGHT.md             unixText
+HISTORY                  unixText
+HISTORY.md               unixText
+ISSUE_TEMPLATE           unixText
+ISSUE_TEMPLATE.md        unixText
+LICENSE                  unixText
+LICENSE.md               unixText
+MAINTAINERS              unixText
+MAINTAINERS.md           unixText
+NEWS                     unixText
+NEWS.md                  unixText
+NOTES                    unixText
+NOTES.md                 unixText
+NOTICE                   unixText
+NOTICE.md                unixText
+PULL_REQUEST_TEMPLATE    unixText
+PULL_REQUEST_TEMPLATE.md unixText
+README                   unixText
+README.md                unixText
+ROADMAP                  unixText
+ROADMAP.md               unixText
+RELEASES                 unixText
+RELEASES.md              unixText
+TODO                     unixText
+TODO.md                  unixText
+USING                    unixText
+USING.md                 unixText
+VENDORING                unixText
+VENDORING.md             unixText
+VERSION                  unixText
+VERSION.md               unixText
+VERSION.txt              unixText
+.github/**/*.md          unixText
+.gitlab/**/*.md          unixText
+
+# All VS Code JSON Configuration files should be using Windows line endings.
+.vscode/**/*.json        winText
+
+# Generic Text File Content
+*.txt                    unixText
+*.conf                   unixText
+*.config                 unixText
+*.md                     unixText
+*.markdown               unixText
+*.ini                    winText
+*.reg                    winText
+*.yml                    unixText
+*.yaml                   unixText
+*.sls                    unixText
+*.hcl                    unixText
+*.toml                   unixText
+*.tpl                    unixText
+*.sql                    winText
+*.liquid                 winText  diff=csharp
+*.props                  winText
+
+# Unix Shell/Script/Program Files
+*.sh                     unixText
+*.awk                    unixText
+*.sed                    unixText
+*.tcl                    unixText
+*.php                    unixText diff=php
+*.pl                     unixText diff=perl
+*.py                     unixText diff=python
+*.tex                    unixText diff=tex
+*.bin                    binFile
+*.so                     binFile
+*.pyc                    binFile
+*.pyd                    binFile
+
+# Windows Command/Program Files
+*.cmd                    winText
+*.bat                    winText
+*.ps1                    winText
+*.vbs                    winText
+*.hta                    winText
+*.exe                    binFile
+*.com                    binFile
+*.dll                    binFile
+*.ocx                    binFile
+*.sys                    binFile
+*.tlb                    binFile
+
+# Omnis Library Files
+*.lbs                    binFile
+*.lbr                    binFile
+
+# Software installer archives
+*.zip                    binFile
+*.cab                    binFile
+*.cat                    binFile
+*.rar                    binFile
+*.gz                     binFile
+*.gzip                   binFile
+*.xz                     binFile
+*.bz                     binFile
+*.bz2                    binFile
+*.lzma                   binFile
+*.lzma2                  binFile
+*.tar                    binFile
+*.tgz                    binFile
+*.tbz2                   binFile
+*.z                      binFile
+*.ar                     binFile
+*.msi                    binFile
+*.msu                    binFile
+*.deb                    binFile
+*.rpm                    binFile
+*.gem                    binFile
+*.dtsx                   binFile
+*.pbix                   binFile
+
+# X509 Certificate files
+*.crt                    unixText
+*.cer                    unixText
+*.cert                   unixText
+*.key                    unixText
+*.rsa                    unixText
+*.csr                    unixText
+*.pem                    unixText
+*.der                    binFile
+*.pfx                    binFile
+*.jks                    binFile
+*.p7b                    binFile
+*.p7c                    binFile
+*.p12                    binFile
+
+# Image File Formats
+*.png                    imageFile
+*.jpg                    imageFile
+*.jpeg                   imageFile
+*.ico                    imageFile
+*.bmp                    imageFile
+*.wmf                    imageFile
+*.tiff                   imageFile
+*.gif                    imageFile
+*.gifv                   imageFile
+*.xcf                    imageFile
+*.ttf                    imageFile
+*.ttc                    imageFile
+*.otf                    imageFile
+*.woff                   imageFile
+
+# Document File Formats
+*.pdf                    docFile
+*.doc                    docFile
+*.docx                   docFile
+*.xls                    docFile
+*.xlsx                   docFile
+*.ppt                    docFile
+*.pptx                   docFile
+*.vsd                    docFile
+*.vsdx                   docFile
+*.mdb                    docFile
+*.onenote                docFile
+*.odf                    docFile
+*.odp                    docFile
+*.odt                    docFile
+*.odg                    docFile
+*.ods                    docFile
+*.fodp                   docFile
+*.fodt                   docFile
+*.fodg                   docFile
+*.fods                   docFile
+*.odb                    docFile
+*.sxw                    docFile
+*.stw                    docFile
+*.sxc                    docFile
+*.stc                    docFile
+
+# Web Markup Files
+*.htm                    unixText diff=html
+*.html                   unixText diff=html
+*.js                     winText diff=java
+*.json                   winText diff=java
+*.ts                     winText diff=java
+*.css                    unixText diff=css
+*.less                   unixText diff=css
+*.sass                   unixText diff=css
+*.svg                    unixText diff=xml
+*.xml                    unixText diff=xml
+*.xsl                    unixText diff=xml
+*.xsd                    unixText diff=xml
+*.dtd                    unixText diff=xml
+*.props                  unixText diff=xml
+*.rng                    unixText
+*.rnc                    unixText
+
+# .NET/Visual Studio
+*.cs                     winText   diff=csharp
+*.c                      unixText  diff=cpp
+*.cpp                    unixText  diff=cpp
+*.cxx                    unixText  diff=cpp
+*.asp                    unixText  diff=html
+*.aspx                   unixText  diff=html
+*.cshtml                 winText   diff=html
+*.wxs                    unixText  diff=xml
+*.wxi                    unixText  diff=xml
+*.loc                    unixText  diff=xml
+*.rdl                    unixText  diff=xml
+*.rds                    unixText  diff=xml
+*.rsd                    unixText  diff=xml
+*.java                   unixText  diff=java
+*.liquid                 winText
+
+# Project Files
+*.sln                    winText
+*.proj                   winText  diff=xml
+*.csproj                 winText  diff=xml
+*.vbproj                 winText  diff=xml
+*.wixproj                winText  diff=xml
+*.dtsproj                winText  diff=xml
+*.rptproj                winText  diff=xml
+
+# Resource input files
+*.res                    winText
+*.resx                   winText  diff=xml
+*.nuspec                 unixText diff=xml
+*.in                     unixText
+*.am                     unixText
+*.m4                     unixText
+Makefile                 unixText
+
+# Compiler output files
+*.suo                    binFile export-ignore
+*.user                   binFile export-ignore
+*.o                      binFile
+*.a                      binFile
+*.obj                    binFile
+*.lib                    binFile
+*.class                  binFile
+*.jar                    binFile
+*.resources              binFile
+*.wixlib                 binFile
+*.wixobj                 binFile
+*.nuget                  binFile
+
+# Ruby Project Files
+*.rb                     unixText diff=ruby
+*.erb                    unixText diff=html
+Gemfile                  unixText
+Gemfile.lock             unixText
+*.gemspec                unixText
+
+# Docker Configuration files
+Dockerfile               unixText
+.dockerignore            unixText
+
+# Node Project files
+package.json             unixText
+yarn.lock                unixText
+.mocha.opts              unixText
+
+# Oxygen Project Files
+*.xpr                    winText diff=xml
+*.framework              winText diff=xml
+*.scenarios              winText diff=xml
