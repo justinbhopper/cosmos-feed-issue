@@ -45,7 +45,9 @@ namespace TestConsole
             var feed = container.GetItemQueryIterator<Example>(query, requestOptions: new QueryRequestOptions
             {
                 PartitionKey = Example.PartitionKey,
-                MaxItemCount = 5
+                MaxItemCount = 5,
+                MaxBufferedItemCount = 0,
+                MaxConcurrency = 0
             });
 
             var firstPage = await feed.ReadNextAsync();
