@@ -37,12 +37,14 @@ namespace TestConsole
 
             _logger.Enabled = true; // Start logging now
 
+            Console.WriteLine();
             Console.WriteLine("---- There should only be one call after this line ----");
+            Console.WriteLine();
 
-            var query = new QueryDefinition($"select r from root r where r.{nameof(Example.Partition)} = @partitionKey")
+            var query = new QueryDefinition($"select r from root r where r.{nameof(Example.Partition)} = @partitionKey order by r._ts")
                 .WithParameter("@partitionKey", Example.PartitionValue);
 
-            var feed = container.GetItemQueryIterator<Example>(query, requestOptions: new QueryRequestOptions
+            var feed1 = container.GetItemQueryIterator<Example>(query, requestOptions: new QueryRequestOptions
             {
                 PartitionKey = Example.PartitionKey,
                 MaxItemCount = 5,
@@ -50,8 +52,23 @@ namespace TestConsole
                 MaxConcurrency = 0
             });
 
-            var firstPage = await feed.ReadNextAsync();
+            var firstPage = await feed1.ReadNextAsync();
             Console.WriteLine($"Retrieved first page, {firstPage.Count} items.");
+
+            Console.WriteLine();
+            Console.WriteLine("---- There should only be one call after this line ----");
+            Console.WriteLine();
+
+            var feed2 = container.GetItemQueryIterator<Example>(query, continuationToken: firstPage.ContinuationToken, requestOptions: new QueryRequestOptions
+            {
+                PartitionKey = Example.PartitionKey,
+                MaxItemCount = 5,
+                MaxBufferedItemCount = 0,
+                MaxConcurrency = 0
+            });
+
+            var secondPage = await feed2.ReadNextAsync();
+            Console.WriteLine($"Retrieved second page, {secondPage.Count} items.");
         }
 
         private async Task<Container> GetContainerAsync()
